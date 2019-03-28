@@ -28,7 +28,6 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/asaskevich/govalidator"
 	"github.com/garyburd/redigo/redis"
 )
 
@@ -56,11 +55,6 @@ func (site Site) redisdb() redis.Conn {
 }
 
 func (site Site) saveShort(url string) (shortest string, err error) {
-/*
-	if !govalidator.IsURL(url) {
-		return "", errors.New("invalid url")
-	}
-*/
 	redisdb := site.redisdb()
 	defer redisdb.Close()
 
