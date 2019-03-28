@@ -65,7 +65,7 @@ func (site Site) saveShort(url string) (shortest string, err error) {
 		return site.Host + similar, nil
 	}
 
-	for hashShortestLen := 1; hashShortestLen <= 32; hashShortestLen++ {
+	for hashShortestLen := 12; hashShortestLen <= 32; hashShortestLen++ {
 		s, _ := redisdb.Do("GET", hash[0:hashShortestLen])
 		if s == nil {
 			shortest = hash[0:hashShortestLen]
